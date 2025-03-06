@@ -1,0 +1,99 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: url('https://static.wixstatic.com/media/46c33e_6a5ab55feceb44e8b8e63bd941256b23~mv2.jpg/v1/fill/w_2591,h_1865,al_c,q_90,enc_avif,quality_auto/46c33e_6a5ab55feceb44e8b8e63bd941256b23~mv2.jpg') no-repeat center center fixed;
+    background-size: cover;
+  }
+  
+  
+  
+  /* Center content vertically and horizontally */
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    /* background-color: #c0c0c0; */
+  }
+  
+  /* White card-like box */
+  .content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 90%;  /* Takes 90% of the screen width */
+    max-width: 400px; /* Prevents it from becoming too large */
+  }
+  
+  /* Heading styles */
+  h1 {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+  
+  /* Button styles */
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+    background: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background: #0057b3cc;
+  }
+  
+
+  /* ✅ Responsive Styles */
+@media (max-width: 480px) {
+    h1 {
+      font-size: 20px;
+    }
+  
+    button {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+  
+    .container {
+      padding: 10px;
+    }
+  }
+
+  /* ✅ Responsive Styles */
+@media (max-width: 375px) {
+    h1 {
+      font-size: 20px;
+    }
+  
+    button {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+  
+    .container {
+      padding: 16px;
+    }
+  }
+
+  .banner img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+  }
+  
