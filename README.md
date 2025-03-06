@@ -1,12 +1,76 @@
-# React + Vite
+# Vite + React Survey App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a survey application built with **Vite** and **React**, designed to provide a fast and interactive survey experience.
 
-Currently, two official plugins are available:
+## Features
+- Dynamic question flow (next question depends on the selected answer)
+- Fast and optimized with Vite
+- State management using React hooks
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Getting Started
 
-## Expanding the ESLint configuration
+### Prerequisites
+Ensure you have **Node.js** installed. You can download it from [nodejs.org](https://nodejs.org/).
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Installation
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/yourusername/survey-app.git
+   cd survey-app
+   ```
+2. **Install dependencies:**
+   ```sh
+   npm install
+   ```
+
+### Running the App
+Start the development server:
+```sh
+npm run dev
+```
+The app will be available at `http://localhost:5173/`.
+
+### Building for Production
+To create an optimized production build:
+```sh
+npm run build
+```
+To preview the built app:
+```sh
+npm run preview
+```
+
+## Folder Structure
+```
+/survey-app
+│── public/            # Static assets
+│── src/
+│   ├── components/    # UI components
+│   ├── pages/         # Page components
+│   ├── data/          # Survey questions
+│   ├── hooks/         # Custom hooks
+│   ├── App.jsx        # Root component
+│   ├── main.jsx       # Entry point
+│── package.json       # Project dependencies
+│── vite.config.js     # Vite configuration
+│── README.md          # Project documentation
+```
+
+## Technologies Used
+- **React** – UI development
+- **Vite** – Fast build tool
+
+## Contributing
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature-name`)
+3. Commit your changes (`git commit -m 'Add new feature'`)
+4. Push to the branch (`git push origin feature-name`)
+5. Open a Pull Request
+
+## License
+This project is licensed under the MIT License.
+
+---
+
+### **Happy Coding! 🚀**
+
