@@ -4,7 +4,7 @@ FROM node:18
 WORKDIR /app
 
 # Copy package.json and package-lock.json to install dependencies
-COPY package.json package-lock.json ./
+COPY package*.json ./
 
 # Install dependencies and skip optional ones causing issues
 RUN npm install
@@ -16,4 +16,4 @@ COPY . .
 EXPOSE 5173
 
 # Start the Vite dev server and allow external access
-CMD ["npm", "run", "dev", "--", "--host"]
+CMD ["npm", "run", "dev"]
