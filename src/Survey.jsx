@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Survey.css";
 
 // const API_URL = "https://opentdb.com/api.php?amount=10&category=18&type=multiple"; // Example API
-const API_URL = "https://opentdb.com/api.php?amount=5&category=18&difficulty=easy&type=boolean"
+const API_URL = "https://opentdb.com/api.php?amount=5&category=18&difficulty=easy"
 
 function Survey({ onBack }) {
   const [questions, setQuestions] = useState([]);
@@ -16,12 +16,15 @@ function Survey({ onBack }) {
     fetch(API_URL)
       .then((res) => res.json())
       .then((data) => {
-        const formattedQuestions = data.results.map((q, index) => ({
+        console.log('data',data.results)
+        const formattedQuestions = data.results?.map((q, index) => ({
           id: index,
           question: q.question,
-          options: [...q.incorrect_answers, q.correct_answer].sort(() => Math.random() - 0.5), // Shuffle answers
+          options: [...q.incorrect_answers, q.correct_answer], // Shuffle answers
           correct: q.correct_answer,
         }));
+        console.log('formattedQuestions',formattedQuestions)
+
         setQuestions(formattedQuestions);
         setLoading(false);
       })
@@ -59,11 +62,20 @@ function Survey({ onBack }) {
     }, 250);
   };
 
-  // Ensure all answers are required
-  const isAnswered = answers[currentQuestion] !== undefined;
+ 
+  const isAnswered = answers[currentQuestion] !== undefined; // Ensure all answers are required
+  const progress = ((currentQuestion + 1) / questions.length) * 100; 
 
   return (
     <div className="survey">
+      {
+      loading ?'': (
+        <div className="progress" style={{ width: `${progress}%` }}>
+           <span className="progress-text" style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100%", fontWeight: "bold" }}>
+      {Math.round(progress)}%
+    </span>
+      </div>
+      )}
       <div className="card-container">
         {loading ? (
           <div className="loader"></div>
@@ -76,20 +88,15 @@ function Survey({ onBack }) {
                   <th>#</th>
                   <th>Question</th>
                   <th>Your Answer</th>
-                  {/* <th>Correct Answer</th>
-                  <th>Result</th> */}
                 </tr>
               </thead>
               <tbody>
                 {questions.map((q, index) => {
-                  const isCorrect = answers[index] === q.correct;
                   return (
-                    <tr key={index} className={isCorrect ? "correct" : "incorrect"}>
+                    <tr key={index} >
                       <td>{index + 1}</td>
                       <td dangerouslySetInnerHTML={{ __html: q.question }}></td>
                       <td dangerouslySetInnerHTML={{ __html: answers[index] || "Not answered" }}></td>
-                      {/* <td dangerouslySetInnerHTML={{ __html: q.correct }}></td>
-                      <td>{isCorrect ? "✅ Correct" : "❌ Incorrect"}</td> */}
                     </tr>
                   );
                 })}
@@ -102,8 +109,8 @@ function Survey({ onBack }) {
         ) : (
           <div className="card">
             <div className="options">
-              <h2>{questions[currentQuestion].question}</h2>
-              {questions[currentQuestion].options.map((option, index) => (
+              <h2>{questions[currentQuestion]?.question}</h2>
+              {questions[currentQuestion]?.options.map((option, index) => (
                 <button
                   key={index}
                   onClick={() => handleAnswer(option)}
